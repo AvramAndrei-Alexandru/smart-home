@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user-models';
+import { Role } from '../utils/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { UserModel } from '../models/user-models';
 export class DataStoreService {
 
   public users: UserModel[] = [];
+  public loggedUser: string;
 
   constructor() { }
 
@@ -18,7 +20,12 @@ export class DataStoreService {
   }
 
   private seedUsers(): void {
-    
+    let andreiAdult = <UserModel>{
+      username: "andrei",
+      role: Role.ADULT,
+      password: "password"
+    }
+    this.users.push(andreiAdult);
   }
 
 }
