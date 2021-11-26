@@ -20,13 +20,33 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HeaderComponent } from './components/header/header.component';
+import { ThermostatPageComponent } from './components/thermostat-page/thermostat-page.component';
+import { LightingControlPageComponent } from './components/lighting-control-page/lighting-control-page.component';
+import { GroceriesDatabasePageComponent } from './components/groceries-database-page/groceries-database-page.component';
+import { ScreenTimeTvPageComponent } from './components/screen-time-tv-page/screen-time-tv-page.component';
+import { MedicineTimerPageComponent } from './components/medicine-timer-page/medicine-timer-page.component';
+import { SecurityControlPageComponent } from './components/security-control-page/security-control-page.component';
+import { VacuumCleanerPageComponent } from './components/vacuum-cleaner-page/vacuum-cleaner-page.component';
+import { MusicPageComponent } from './components/music-page/music-page.component';
+import { FlowerWateringPageComponent } from './components/flower-watering-page/flower-watering-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    HeaderComponent,
+    ThermostatPageComponent,
+    LightingControlPageComponent,
+    GroceriesDatabasePageComponent,
+    ScreenTimeTvPageComponent,
+    MedicineTimerPageComponent,
+    SecurityControlPageComponent,
+    VacuumCleanerPageComponent,
+    MusicPageComponent,
+    FlowerWateringPageComponent
   ],
   imports: [
     BrowserModule,
