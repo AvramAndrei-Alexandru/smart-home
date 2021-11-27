@@ -30,6 +30,7 @@ import { SecurityControlPageComponent } from './components/security-control-page
 import { VacuumCleanerPageComponent } from './components/vacuum-cleaner-page/vacuum-cleaner-page.component';
 import { MusicPageComponent } from './components/music-page/music-page.component';
 import { FlowerWateringPageComponent } from './components/flower-watering-page/flower-watering-page.component';
+import { MatSnackBar, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -67,9 +68,10 @@ import { FlowerWateringPageComponent } from './components/flower-watering-page/f
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,8 @@ export enum LocalStorageKeys {
 }
 
 export enum Role {
-    "ADULT" = 0,
-    "CHILD" = 1
+    ADULT = "ADULT",
+    CHILD = "CHILD"
 }
 
 export enum RoutingConstants {

@@ -1,1 +1,39 @@
-<p>register-page works!</p>
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <h2>Register</h2>
+        <mat-error *ngIf="loginInvalid" class="mb-2">
+          {{errorMessage}}
+        </mat-error>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error>
+            Please provide a valid username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <input matInput type="password" placeholder="Confirm password" formControlName="confirmPassword" required>
+            <mat-error>
+              Please provide a valid password
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Role</mat-label>
+            <mat-select [(value)]="selectedRole">
+              <mat-option [value]="roles" *ngFor="let roles of roles">{{roles}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="button-section">
+          <button mat-raised-button (click)="onSubmit()" color="primary">Register</button>
+          <button mat-raised-button (click)="redirectToLogin()" color="primary">Go to login</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>

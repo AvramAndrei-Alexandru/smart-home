@@ -8,3 +8,12 @@ mat-card {
   mat-form-field {
     display: block;
   }
+
+  .button-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 10px;
+  }

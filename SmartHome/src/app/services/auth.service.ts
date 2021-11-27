@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MockHttpResponseModel } from '../models/response-models';
-import { UserModel } from '../models/user-models';
+import { RegisterUserModel, UserModel } from '../models/user-models';
 import { AppUtils } from '../utils/app-utils';
 import { Role, RoutingConstants } from '../utils/enums';
 import { DataStoreService } from './data-store.service';
@@ -29,6 +29,27 @@ export class AuthService {
     response.success = false;
     response.error = "Invalid username or password";
     return response;
+  }
+
+  //With this method a new user can be added to the database
+  public async register(user: RegisterUserModel): Promise<MockHttpResponseModel> {
+    let response = <MockHttpResponseModel>{}
+    let existingUser = this._dataStoreService.users.find(u => u.username.toLowerCase() === user.username.toLowerCase());
+    //We can not allow duplicated usernames
+    if (AppUtils.isNullOrUndefined(existingUser)) {
+      let userToAdd = <UserModel>{
+        username: user.username,
+        password: user.password,
+        role: user.role
+      };
+      this._dataStoreService.users.push(userToAdd);
+      response.success = true;
+      return response;
+    } else {
+      response.success = false;
+      response.error = "Duplicated username found."
+      return response;
+    }
   }
 
   //Use this method to log out. It will redirect the user to login

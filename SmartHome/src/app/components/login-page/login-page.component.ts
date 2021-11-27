@@ -15,8 +15,6 @@ export class LoginPageComponent implements OnInit {
 
   public form: FormGroup;
   public loginInvalid = false;
-  private formSubmitAttempt = false;
-  private returnUrl: string;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +22,6 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/game';
 
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -38,9 +35,13 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  public redirectToRegister(): void {
+    this.router.navigate([RoutingConstants.Register]);
+  }
+
+
   public onSubmit(): void {
     this.loginInvalid = false;
-    this.formSubmitAttempt = false;
     if (this.form.valid) {
       const username = this.form.get('username')?.value;
       const password = this.form.get('password')?.value;
@@ -58,8 +59,6 @@ export class LoginPageComponent implements OnInit {
       } else {
         this.loginInvalid = true;
       }
-    } else {
-      this.formSubmitAttempt = true;
     }
   }
 }

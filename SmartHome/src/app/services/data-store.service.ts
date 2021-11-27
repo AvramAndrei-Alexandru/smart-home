@@ -25,7 +25,13 @@ export class DataStoreService {
       role: Role.ADULT,
       password: "password"
     }
+    let child = <UserModel>{
+      username: "child",
+      role: Role.CHILD,
+      password: "password"
+    }
     this.users.push(andreiAdult);
+    this.users.push(child);
   }
 
 }
