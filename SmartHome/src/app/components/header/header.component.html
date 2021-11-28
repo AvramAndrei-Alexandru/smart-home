@@ -1,1 +1,23 @@
-<p>header works!</p>
+<mat-card class="header-container">
+    <button mat-fab color="primary" (click)="goToHomePage()">
+        HOME PAGE
+        <mat-icon>home</mat-icon>
+    </button>
+    <h2>
+        WELCOME {{userName}}
+        <h5>
+            SMART HOME V1.0
+        </h5>
+    </h2>
+    <button mat-fab color="primary" (click)="onLogOutClick()">
+        LOG OUT
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-card>
+<div *ngIf="!isHomePage" class="page-name">
+    <mat-card>
+        <h6>
+            {{pageName}}
+        </h6>
+    </mat-card>
+</div>

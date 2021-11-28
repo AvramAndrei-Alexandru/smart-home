@@ -1,1 +1,47 @@
-<p>home-page works!</p>
+<app-header [isHomePage]="true"></app-header>
+<div class="container custom-margin">
+    <mat-card class="button-section">
+        <div class="button-group">
+            <button mat-fab color="primary" (click)="redirectToPages(0)">
+                THERMOSTAT
+                <mat-icon>ac_unit</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(1)">
+                LIGHTING CONTROL
+                <mat-icon>lightbulb</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(2)">
+                GROCERIES
+                <mat-icon>kitchen</mat-icon>
+            </button>
+        </div>
+        <div class="button-group">
+            <button mat-fab color="primary" (click)="redirectToPages(3)">
+                TV CONTROL
+                <mat-icon>tv</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(4)">
+                MEDICINE TIMER
+                <mat-icon>medical_services</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(5)">
+                HOME SECURITY
+                <mat-icon>security</mat-icon>
+            </button>
+        </div>
+        <div class="button-group last-group">
+            <button mat-fab color="primary" (click)="redirectToPages(6)">
+                VACUUM CLEANER
+                <mat-icon>cleaning_services</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(7)">
+                MUSIC CONTROL
+                <mat-icon>queue_music</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="redirectToPages(8)">
+                FLOWER WATERING
+                <mat-icon>local_florist</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+</div>

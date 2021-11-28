@@ -30,9 +30,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    if (this.authService.isUserLoggedIn()) {
-      this.router.navigate([RoutingConstants.HomePage]);
-    }
   }
 
   public redirectToRegister(): void {

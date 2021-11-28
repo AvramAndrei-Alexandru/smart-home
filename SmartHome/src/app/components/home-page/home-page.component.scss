@@ -1,1 +1,26 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.button-section {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ padding: 10% 10% 10% 10%;
+ button {
+     min-width: 200px;
+     justify-content: space-between;
+ }
+ .button-group {
+     margin-top: 50px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+ }
+}
+
+.last-group {
+    margin-bottom: 50px;
+}
+
+.custom-margin {
+    margin-top: 50px;
+}
