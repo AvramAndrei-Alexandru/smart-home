@@ -1,1 +1,33 @@
 <app-header [pageName]="'MEDICINE TIMER'"></app-header>
+<div class="input-area">
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Medicine name</mat-label>
+        <input matInput type="text" [(ngModel)]="newMedicineName">
+      </mat-form-field>
+      <button mat-fab color="primary" (click)="onAddMedicine()">
+        ADD MEDICINE
+    </button>      
+</div>
+<div class="t-container">
+    <div *ngFor="let item of medicine; let i = index">
+        <mat-card class="t-item">
+            <div class="room-name" [ngClass]="{'time-finished': timeFinished(i)}">
+                {{item.name}}
+            </div>
+            <div class="progress-section">
+                <mat-progress-bar mode="determinate" [value]="getProgress(i)"></mat-progress-bar>
+            </div>
+            <div>
+                <ngx-timepicker-field [(ngModel)]="item.remainingTime" [format]="24" [defaultTime]="'23:11'"></ngx-timepicker-field>
+            </div>
+            <div class="button-section">
+                <button mat-fab color="primary" (click)="onStart(i)">
+                    START
+                </button>
+                <button mat-fab color="primary" (click)="onStop(i)">
+                    STOP
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</div>

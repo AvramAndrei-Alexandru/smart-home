@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Medicine } from '../models/medicine-models';
 import { Thermostat } from '../models/thermostat-models';
 import { UserModel } from '../models/user-models';
 import { Role } from '../utils/enums';
+import { Time } from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class DataStoreService {
 
   public users: UserModel[] = [];
   public thermostats: Thermostat[] = [];
+  public medicine: Medicine[] = [];
   public loggedUser: string;
 
   constructor() { }
@@ -20,6 +23,31 @@ export class DataStoreService {
   public seedInitialData(): void {
     this.seedUsers();
     this.seedThermostats();
+    this.seedMedicine();
+  }
+
+  private seedMedicine(): void {
+    let medicine = <Medicine>{
+      name: "Paracetamol",
+      isStarted: true,
+      initialTime: "1:20",
+      remainingTime:"1:20"
+    };
+    this.medicine.push(medicine);
+    medicine = <Medicine>{
+      name: "Nurofen",
+      isStarted: true,
+      initialTime: "0:40",
+      remainingTime:"0:40"
+    };
+    this.medicine.push(medicine);
+    medicine = <Medicine>{
+      name: "Advil",
+      isStarted: true,
+      initialTime: "5:30",
+      remainingTime:"5:30"
+    };
+    this.medicine.push(medicine);
   }
 
   private seedThermostats(): void {
