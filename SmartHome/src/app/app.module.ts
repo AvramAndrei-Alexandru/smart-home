@@ -34,7 +34,8 @@ import { MatSnackBar, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import {MatChipsModule} from '@angular/material/chips'; 
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatCheckboxModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatChipsModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}],
   bootstrap: [AppComponent]

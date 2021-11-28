@@ -16,8 +16,6 @@ export class AuthGuardService implements CanActivate{
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    //TODO REMOVE THIS
-    return true;
     if (this.isInAnyPageThatRequiresLoggedUser(state)) {
       if (!this._authService.isUserLoggedIn()) {
         return this.router.navigate([RoutingConstants.Login]);

@@ -4,6 +4,7 @@ import { Thermostat } from '../models/thermostat-models';
 import { UserModel } from '../models/user-models';
 import { Role } from '../utils/enums';
 import { Time } from "@angular/common";
+import { Food } from '../models/groceries-models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class DataStoreService {
   public users: UserModel[] = [];
   public thermostats: Thermostat[] = [];
   public medicine: Medicine[] = [];
+  public groceries: Food[] = [];
+  public groceriesList: Food[] = [];
   public loggedUser: string;
 
   constructor() { }
@@ -24,6 +27,45 @@ export class DataStoreService {
     this.seedUsers();
     this.seedThermostats();
     this.seedMedicine();
+    this.seedGroceries();
+  }
+
+  private seedGroceries(): void {
+    let food = <Food>{
+      name: "Timisoreana",
+      quantity: 5
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Ursus",
+      quantity: 4
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Albacher",
+      quantity: 10
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Bread",
+      quantity: 2
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Ice cream",
+      quantity: 12
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Pizza",
+      quantity: 1
+    };
+    this.groceries.push(food);
+    food = <Food>{
+      name: "Water",
+      quantity: 3
+    };
+    this.groceries.push(food);
   }
 
   private seedMedicine(): void {
