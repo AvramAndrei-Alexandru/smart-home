@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Thermostat } from '../models/thermostat-models';
 import { UserModel } from '../models/user-models';
 import { Role } from '../utils/enums';
 
@@ -9,6 +10,7 @@ import { Role } from '../utils/enums';
 export class DataStoreService {
 
   public users: UserModel[] = [];
+  public thermostats: Thermostat[] = [];
   public loggedUser: string;
 
   constructor() { }
@@ -17,6 +19,52 @@ export class DataStoreService {
   //This method is called on app creation. Use this method to seed all the data that you may need.
   public seedInitialData(): void {
     this.seedUsers();
+    this.seedThermostats();
+  }
+
+  private seedThermostats(): void {
+    let thermostat = <Thermostat>{
+      roomName: "Living room",
+      currentTemperature: 23,
+      hasAC: false
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Kitchen",
+      currentTemperature: 21,
+      hasAC: false
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Parent's bedroom",
+      currentTemperature: 22,
+      hasAC: true
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Grandparent's bedroom",
+      currentTemperature: 20,
+      hasAC: true
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Child bedroom 1",
+      currentTemperature: 23,
+      hasAC: false
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Child bedroom 2",
+      currentTemperature: 22,
+      hasAC: false
+    };
+    this.thermostats.push(thermostat);
+    thermostat = <Thermostat>{
+      roomName: "Bathroom",
+      currentTemperature: 20,
+      hasAC: false
+    };
+    this.thermostats.push(thermostat);
   }
 
   private seedUsers(): void {

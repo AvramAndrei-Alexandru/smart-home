@@ -31,6 +31,7 @@ import { VacuumCleanerPageComponent } from './components/vacuum-cleaner-page/vac
 import { MusicPageComponent } from './components/music-page/music-page.component';
 import { FlowerWateringPageComponent } from './components/flower-watering-page/flower-watering-page.component';
 import { MatSnackBar, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,9 @@ import { MatSnackBar, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}],
   bootstrap: [AppComponent]

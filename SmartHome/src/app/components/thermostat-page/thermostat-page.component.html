@@ -1,1 +1,24 @@
 <app-header [pageName]="'THERMOSTAT'"></app-header>
+<div class="t-container">
+    <div *ngFor="let item of thermostats; let i = index">
+        <mat-card class="t-item">
+            <div class="room-name">
+                {{item.roomName}}
+                <div class="ac-area">
+                    <mat-checkbox [(ngModel)]="item.hasAC">AC</mat-checkbox>
+                </div>
+            </div>
+            <div class="t-input">
+                <mat-slider
+                [max]="30"
+                [min]="15"
+                [step]="1"
+                [thumbLabel]="true"
+                [(ngModel)]="item.currentTemperature"
+                >
+                </mat-slider>
+                <input [min]="15" [max]="30" type="number" matInput [(ngModel)]="item.currentTemperature">
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Thermostat } from 'src/app/models/thermostat-models';
+import { DataStoreService } from 'src/app/services/data-store.service';
 
 @Component({
   selector: 'app-thermostat-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThermostatPageComponent implements OnInit {
 
-  constructor() { }
+  public thermostats: Thermostat[] = [];
+  
+  constructor(
+    private _dataStoreService: DataStoreService
+  ) { }
 
   ngOnInit(): void {
+    this.thermostats = this._dataStoreService.thermostats;
+    console.log(this.thermostats)
   }
 
 }
