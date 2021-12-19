@@ -1,1 +1,44 @@
 <app-header [pageName]="'LIGHTING CONTROL'"></app-header>
+
+<div class="input-area">
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Room name</mat-label>
+        <input matInput type="text" [(ngModel)]="newRoom">
+      </mat-form-field>
+      <button mat-fab color="primary" (click)="onAddNewRoom()">
+        ADD ROOM
+    </button>    
+    
+    <div class="lights-off-button">
+        <button mat-fab color="primary" (click)="turnOffAllLights()">
+            Turn off all lights
+        </button>
+    </div>
+
+</div>
+
+<div class="l-container">
+    <div *ngFor="let item of rooms; let i = index">
+        <mat-card class="l-item">
+            <div class="room-name">
+                {{item.roomName}}
+            </div> 
+            <div class="l-input">
+                <mat-slider
+                [max]="100"
+                [min]="0"
+                [step]="1"
+                [thumbLabel]="true"
+                [(ngModel)]="item.currentLighting">
+                </mat-slider>
+                <input [min]="0" [max]="100" type="number" matInput [(ngModel)]="item.currentLighting">
+            </div>  
+            <div class="l-buttons">
+                <button mat-fab color="primary" (click)="turnOffRoomLight(item)"> Turn off</button>
+                <button mat-fab color="primary" (click)="turnOnRoomLight(item)"> Turn on</button>
+            </div>       
+        </mat-card>
+
+    </div>
+
+</div>

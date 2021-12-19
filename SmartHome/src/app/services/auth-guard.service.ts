@@ -50,7 +50,9 @@ export class AuthGuardService implements CanActivate{
       state.url === RoutinConstatantsForAuthGuard.Music ||
       state.url === RoutinConstatantsForAuthGuard.FlowerWatering
     ) {
-      return true;
+      //ADDED
+      //return true;
+      return false;
     }
     return false;
   }

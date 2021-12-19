@@ -5,6 +5,10 @@ import { UserModel } from '../models/user-models';
 import { Role } from '../utils/enums';
 import { Time } from "@angular/common";
 import { Food } from '../models/groceries-models';
+import { Lighting } from '../models/lighting-models';
+import { SecurityElement } from '../models/security-element';
+import { Security } from '../models/security-models';
+import { ScreenControl } from '../models/screen-control-models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,10 @@ export class DataStoreService {
   public groceries: Food[] = [];
   public groceriesList: Food[] = [];
   public loggedUser: string;
+  //Added
+  public lighting: Lighting[] = [];
+  public security: Security[] = [];
+  public screen_control: ScreenControl[] = [];
 
   constructor() { }
 
@@ -28,6 +36,11 @@ export class DataStoreService {
     this.seedThermostats();
     this.seedMedicine();
     this.seedGroceries();
+
+    //Added
+    this.seedLighting();
+    this.seedSecurity();
+    this.seedScreenControl();
   }
 
   private seedGroceries(): void {
@@ -150,6 +163,137 @@ export class DataStoreService {
     }
     this.users.push(andreiAdult);
     this.users.push(child);
+  }
+
+  //ADDED
+  private seedLighting(): void{
+    let lightRoom = <Lighting>{
+      roomName: "Living room",
+      currentLighting: 23
+    };
+    this.lighting.push(lightRoom);
+
+    lightRoom = <Lighting>{
+      roomName: "Kitchen",
+      currentLighting: 50
+    };
+    this.lighting.push(lightRoom);
+
+
+    lightRoom = <Lighting>{
+      roomName: "Parent's bedroom",
+      currentLighting: 20
+    };
+    this.lighting.push(lightRoom);
+
+
+    lightRoom = <Lighting>{
+      roomName: "Grandparent's bedroom",
+      currentLighting: 80
+    };
+    this.lighting.push(lightRoom);
+
+    lightRoom = <Lighting>{
+      roomName: "Child bedroom 1",
+      currentLighting: 0
+    };
+    this.lighting.push(lightRoom);
+
+    lightRoom = <Lighting>{
+      roomName: "Child bedroom 2",
+      currentLighting: 10
+    };
+    this.lighting.push(lightRoom);
+
+    lightRoom = <Lighting>{
+      roomName: "Bathroom",
+      currentLighting: 0
+    };
+    this.lighting.push(lightRoom);
+  }
+
+
+
+   private seedSecurity(): void{
+    let securityRoom = <Security>{
+      roomName: "Living room",
+      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: false}]
+    };
+    this.security.push(securityRoom);
+
+    securityRoom = <Security>{
+      roomName: "Kitchen",
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}]
+    };
+    this.security.push(securityRoom);
+
+
+    securityRoom = <Security>{
+      roomName: "Parent's bedroom",
+      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: true},<SecurityElement>{entryPoint: "door", locked: false}]
+    };
+    this.security.push(securityRoom);
+
+
+    securityRoom = <Security>{
+      roomName: "Grandparent's bedroom",
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}]
+    };
+    this.security.push(securityRoom);
+
+    securityRoom = <Security>{
+      roomName: "Child bedroom 1",
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}]
+    };
+    this.security.push(securityRoom);
+
+    securityRoom = <Security>{
+      roomName: "Child bedroom 2",
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}, <SecurityElement>{entryPoint: "door 2", locked: true}]
+    };
+    this.security.push(securityRoom);
+
+    securityRoom = <Security>{
+      roomName: "Bathroom",
+      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}]
+    };
+
+    securityRoom = <Security>{
+      roomName: "Hall",
+      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}]
+    };
+    this.security.push(securityRoom);
+  }
+
+
+  private seedScreenControl(): void{
+    let screen = <ScreenControl>{
+      device: "TV living room",
+      startTime: "14:35",
+      closeTime:"11:20"
+    };
+    this.screen_control.push(screen);
+
+    screen = <ScreenControl>{
+      device: "TV Grandparents",
+      startTime: "0:00",
+      closeTime:"0:00"
+    };
+    this.screen_control.push(screen);
+
+    screen = <ScreenControl>{
+      device: "TV Kids room",
+      startTime: "17:00",
+      closeTime:"20:00"
+    };
+    this.screen_control.push(screen);
+
+    screen = <ScreenControl>{
+      device: "TV parents room",
+      startTime: "0:00",
+      closeTime:"0:00"
+    };
+    this.screen_control.push(screen);
   }
 
 }

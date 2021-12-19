@@ -1,1 +1,51 @@
 <app-header [pageName]="'HOME SECURITY'"></app-header>
+
+<div class="input-area">
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Room name</mat-label>
+        <input matInput type="text" [(ngModel)]="newRoom">
+      </mat-form-field>
+      <button mat-fab color="primary" (click)="onAddNewRoom()">
+        ADD ROOM
+    </button>    
+
+    <div class="lights-off-button">
+        <button mat-fab color="primary" (click)="lockEntryPoints()">
+            Lock all entry points
+        </button>
+    </div>
+    
+</div>
+
+<div class="s-container">
+
+    <div *ngFor="let item of rooms; let i = index">
+        <mat-card class="l-item">
+            <div class="room-name">
+                {{item.roomName}}
+            </div> 
+
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Entry point</mat-label>
+                <input matInput type="text" [(ngModel)]="newEntryPoint">
+              </mat-form-field>
+              <button mat-fab color="primary" (click)="onAddNewEntryPoint(item)">
+                Add entry point
+            </button>   
+
+
+            <div *ngFor = "let entry of item.entryPoints; let j = index">
+                <mat-card class="l-item">
+                    <div class="room-name">
+                        {{entry.entryPoint}}
+                    </div> 
+                    <div class="lock-area">
+                        <mat-checkbox [(ngModel)]="entry.locked">Locked</mat-checkbox>
+                    </div>
+                      
+                </mat-card>
+            </div>
+        </mat-card>
+
+    </div>
+</div>
