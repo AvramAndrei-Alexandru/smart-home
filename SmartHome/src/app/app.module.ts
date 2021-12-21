@@ -83,8 +83,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
     MatChipsModule
-    ,
-    DragDropModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}],
   bootstrap: [AppComponent]
