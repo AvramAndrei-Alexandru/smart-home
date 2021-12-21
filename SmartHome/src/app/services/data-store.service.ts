@@ -26,6 +26,7 @@ export class DataStoreService {
   public lighting: Lighting[] = [];
   public security: Security[] = [];
   public screen_control: ScreenControl[] = [];
+  public programs: String[] = [];
 
   constructor() { }
 
@@ -41,6 +42,7 @@ export class DataStoreService {
     this.seedLighting();
     this.seedSecurity();
     this.seedScreenControl();
+    this.seedPrograms();
   }
 
   private seedGroceries(): void {
@@ -217,52 +219,60 @@ export class DataStoreService {
    private seedSecurity(): void{
     let securityRoom = <Security>{
       roomName: "Living room",
-      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: false}]
+      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: false}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
     securityRoom = <Security>{
       roomName: "Kitchen",
-      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}]
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
 
     securityRoom = <Security>{
       roomName: "Parent's bedroom",
-      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: true},<SecurityElement>{entryPoint: "door", locked: false}]
+      entryPoints: [<SecurityElement>{entryPoint: "window 1", locked: true}, <SecurityElement>{entryPoint: "window 2", locked: true},<SecurityElement>{entryPoint: "door", locked: false}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
 
     securityRoom = <Security>{
       roomName: "Grandparent's bedroom",
-      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}]
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
     securityRoom = <Security>{
       roomName: "Child bedroom 1",
-      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}]
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: true}, <SecurityElement>{entryPoint: "door", locked: false}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
     securityRoom = <Security>{
       roomName: "Child bedroom 2",
-      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}, <SecurityElement>{entryPoint: "door 2", locked: true}]
+      entryPoints: [<SecurityElement>{entryPoint: "window", locked: false}, <SecurityElement>{entryPoint: "door", locked: false}, <SecurityElement>{entryPoint: "door 2", locked: true}],
+      newEntryPoint: ""
     };
     this.security.push(securityRoom);
 
     securityRoom = <Security>{
       roomName: "Bathroom",
-      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}]
+      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}],
+      newEntryPoint: ""
     };
 
     securityRoom = <Security>{
       roomName: "Hall",
-      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}]
+      entryPoints: [<SecurityElement>{entryPoint: "door", locked: true}],
+      newEntryPoint: ""
     };
-    this.security.push(securityRoom);
+    this.security.push(securityRoom);   
   }
 
 
@@ -270,30 +280,37 @@ export class DataStoreService {
     let screen = <ScreenControl>{
       device: "TV living room",
       startTime: "14:35",
-      closeTime:"11:20"
+      closeTime:"11:20",
+      programs: ["Minimax", "Natinal Geo", "Eurosport"]
     };
     this.screen_control.push(screen);
 
     screen = <ScreenControl>{
       device: "TV Grandparents",
       startTime: "0:00",
-      closeTime:"0:00"
+      closeTime:"0:00",
+      programs: [ "Pro Tv", "Natinal Geo", "Antena 1", "Eurosport"]
     };
     this.screen_control.push(screen);
 
     screen = <ScreenControl>{
       device: "TV Kids room",
       startTime: "17:00",
-      closeTime:"20:00"
+      closeTime:"20:00",
+      programs: ["Minimax", "Cartoon Network"]
     };
     this.screen_control.push(screen);
 
     screen = <ScreenControl>{
       device: "TV parents room",
       startTime: "0:00",
-      closeTime:"0:00"
+      closeTime:"0:00",
+      programs: [ "Pro Tv", "Natinal Geo", "Antena 1", "Eurosport", "Rock TV"]
     };
     this.screen_control.push(screen);
   }
 
+  public seedPrograms(): void{
+    this.programs.push("Minimax", "Pro Tv", "Natinal Geo", "Antena 1", "Eurosport", "Rock TV", "Cartoon Network");
+  }
 }

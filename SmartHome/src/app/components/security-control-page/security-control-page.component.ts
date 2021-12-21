@@ -14,8 +14,7 @@ export class SecurityControlPageComponent implements OnInit {
 
   public rooms: Security[] = [];
   public newRoom: string = "";
-  public newEntryPoint: String = "";
-
+  
   constructor(private _dataStoreService: DataStoreService) { }
 
   ngOnInit(): void {
@@ -26,7 +25,8 @@ export class SecurityControlPageComponent implements OnInit {
     if (!AppUtils.isNullOrUndefined(this.newRoom) && this.newRoom !== "") {
       let roomToAdd = <Security>{
         roomName: this.newRoom,
-        entryPoints: []
+        entryPoints: [],
+        newEntryPoint: ""
       }
       this.rooms.push(roomToAdd);
       this.newRoom = "";
@@ -42,13 +42,13 @@ export class SecurityControlPageComponent implements OnInit {
   }
 
   public onAddNewEntryPoint(room: Security): void{
-    if (!AppUtils.isNullOrUndefined(this.newEntryPoint) && this.newEntryPoint !== "") {
+    if (!AppUtils.isNullOrUndefined(room.newEntryPoint) && room.newEntryPoint !== "") {
       let entryPointToAdd = <SecurityElement>{};
-      entryPointToAdd.entryPoint = this.newEntryPoint;
+      entryPointToAdd.entryPoint = room.newEntryPoint;
       entryPointToAdd.locked = false;
 
       room.entryPoints.push(entryPointToAdd);
-      this.newEntryPoint = "";
+      room.newEntryPoint = "";
     }
   }
 

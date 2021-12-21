@@ -37,6 +37,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import {MatChipsModule} from '@angular/material/chips'; 
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +83,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
     MatChipsModule
+    ,
+    DragDropModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}],
   bootstrap: [AppComponent]

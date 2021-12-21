@@ -11,26 +11,48 @@
     </button>    
 </div>
 
+
+
 <div class="s-container">
 
     <div *ngFor="let item of tvs; let i = index">
-        <mat-card class="l-item">
+        <mat-card class="s-item">
             <div class="device-name">
                 {{item.device}}
             </div> 
 
-        </mat-card>
-        <mat-card>
-            Start time: 
-            <div>
-                <ngx-timepicker-field [(ngModel)]="item.startTime" [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field>
+            <div class="inline-elem">
+                <div class = "elem">
+                <label> Start time: </label> 
+                <div class = "date-picker">
+                    <ngx-timepicker-field [(ngModel)]="item.startTime" [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field>
+                </div>
+                </div>
+
+                <div class = "elem">
+                <label> Close time: </label> 
+                <div class = "date-picker">
+                    <ngx-timepicker-field [(ngModel)]="item.closeTime" [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field>
+                </div>
+                </div>
+
             </div>
-        </mat-card>
-        <mat-card>
-            Close time: 
-            <div>
-                <ngx-timepicker-field [(ngModel)]="item.closeTime" [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field>
+
+            <div class = "programs-list">
+            <label> Programs: </label>
+                <ul>
+                    <li *ngFor="let program of programs; let i = index">
+                        <div *ngIf="item.programs.includes(program); else elseBranch"> 
+                            <mat-checkbox [checked]="true" (change)="managePrograms(item, program, false)">{{program}}</mat-checkbox>
+                        </div>
+                        <ng-template #elseBranch>
+                            <mat-checkbox [checked]="false" (change)="managePrograms(item, program, true)" style="opacity: 50%;">{{program}}</mat-checkbox>
+                        </ng-template>
+                    </li>
+                </ul>
             </div>
+            
+        
         </mat-card>
     
         
