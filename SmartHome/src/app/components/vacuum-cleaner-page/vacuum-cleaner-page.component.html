@@ -1,1 +1,49 @@
 <app-header [pageName]="'VACUUM CLEANER'"></app-header>
+<div class="input-area">
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Room name</mat-label>
+        <input matInput type="text" [(ngModel)]="newRoomName">
+      </mat-form-field>
+      <button mat-fab color="primary" (click)="onAddNewRoom()">
+        ADD ROOM
+    </button>
+    
+    <button mat-fab color="primary" (click)="onWash()">
+        WASH
+    </button>
+
+    <button mat-fab color="primary" (click)="onStartVacuum()">
+        CLEAN
+    </button>
+
+</div>
+
+<div class="hour-select">
+    
+    <label class="program-start">
+        PROGRAM START TIME
+    </label>
+
+    <div class="t-input">
+        <ngx-timepicker-field [(ngModel)]="vacuumScheduledHour" [format]="24" [defaultTime]="'23:11'"></ngx-timepicker-field>
+    </div>
+</div>
+
+<div class="running-display">
+    <label class="running-label" hidden="true" id="vacuum-running">
+        Vacuum clean scheduled for hour:  {{this.vacuumScheduledHour}}
+    </label>
+</div>
+
+<div class="t-container">
+    <div *ngFor="let item of vacuums; let i = index">
+        <mat-card class="t-item">
+            <div class="ac-area">
+                <div class="room-name">
+                    <mat-checkbox [(ngModel)]="item.hasStarted"></mat-checkbox>
+                    {{item.roomName}}
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

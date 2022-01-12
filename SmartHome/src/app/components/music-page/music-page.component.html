@@ -1,1 +1,48 @@
 <app-header [pageName]="'MUSIC CONTROL'"></app-header>
+
+<div class="music-page">
+    <div class="t-container">
+        <div class="button-container">
+            <button mat-fab color="primary" (click)="onStart()">
+                START
+            </button>
+            <button mat-fab color="primary" (click)="onStop()">
+                STOP
+            </button>
+            <button mat-fab color="primary" (click)="onNext()">
+                NEXT
+            </button>
+        </div>
+        <div *ngFor="let item of clickedRows; let i = index">
+            <mat-card class="t-item">
+                <div class="song-name" [ngClass]="timeFinished()">
+                    {{item.name}}
+                </div>
+                <div class="progress-section">
+                    <mat-progress-bar mode="determinate" [value]="getProgress(i)"></mat-progress-bar>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <mat-card class="table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="length">
+            <th mat-header-cell *matHeaderCellDef>Length</th>
+            <td mat-cell *matCellDef="let element">{{element.length}} s</td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+                mat-row
+                (click)="addClickedRow(row)"
+                [class.demo-row-is-clicked]="isRowClicked(row)"
+                *matRowDef="let row; columns: displayedColumns;"
+            ></tr>
+        </table>
+    </mat-card>
+</div>

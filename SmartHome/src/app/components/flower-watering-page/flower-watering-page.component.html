@@ -1,1 +1,41 @@
 <app-header [pageName]="'FLOWER WATERING'"></app-header>
+<div class="input-area">
+    <button class="watering-button" mat-fab color="primary" (click)="onIndoorStart()">
+        START INDOOR WATERING
+    </button>
+
+    <button class="watering-button" mat-fab color="primary" (click)="onIndoorStop()">
+        STOP INDOOR WATERING
+    </button>
+
+    <label class="running-label" hidden="true" id="indoor-running">
+        Water running...
+    </label>
+</div>
+
+<div class="display-area">
+    <label class="humidity-label">
+        HUMIDITY INDOOR: {{humidityLevelIndoor.toFixed(1)}}%
+    </label>
+</div>
+
+<div class="input-area">
+    <button class="watering-button" mat-fab color="primary" (click)="onOutdoorStart()">
+        START OUTDOOR WATERING
+    </button>
+
+    <button class="watering-button" mat-fab color="primary" (click)="onOutdoorStop()">
+        STOP OUTDOOR WATERING
+    </button>
+
+    <label class="running-label" hidden="true" id="outdoor-running">
+        Water running...
+    </label>
+</div>
+
+<div class="display-area">
+    <label class="humidity-label">
+        HUMIDITY OUTDOOR: {{humidityLevelOutdoor.toFixed(1)}}%
+    </label>
+</div>
+

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Medicine } from '../models/medicine-models';
 import { Thermostat } from '../models/thermostat-models';
+import { Vacuum } from '../models/vacuum-models';
+import { Song } from '../models/music-models';
 import { UserModel } from '../models/user-models';
 import { Role } from '../utils/enums';
 import { Time } from "@angular/common";
@@ -17,7 +19,9 @@ import { ScreenControl } from '../models/screen-control-models';
 export class DataStoreService {
 
   public users: UserModel[] = [];
+  public librarySongs: Song[] = [];
   public thermostats: Thermostat[] = [];
+  public vacuums: Vacuum[] = [];
   public medicine: Medicine[] = [];
   public groceries: Food[] = [];
   public groceriesList: Food[] = [];
@@ -35,6 +39,8 @@ export class DataStoreService {
   public seedInitialData(): void {
     this.seedUsers();
     this.seedThermostats();
+    this.seedVacuums();
+    this.seedSongs();
     this.seedMedicine();
     this.seedGroceries();
 
@@ -105,6 +111,91 @@ export class DataStoreService {
       remainingTime:"5:30"
     };
     this.medicine.push(medicine);
+  }
+
+  private seedSongs(): void {
+    let song = <Song>{
+      name: "Nickleback - Rockstar",
+      length: 30,
+      initialTime: 30,
+      remainingTime: 30
+    };
+    this.librarySongs.push(song);
+
+    song = <Song>{
+      name: "The Script - Hall Of Fame",
+      length: 23,
+      initialTime: 23,
+      remainingTime: 23
+    };
+    this.librarySongs.push(song);
+    
+    song = <Song>{
+      name: "Ed Sheeran - Blow",
+      length: 11,
+      initialTime: 11,
+      remainingTime: 11
+    };
+    this.librarySongs.push(song);
+    song = <Song>{
+      name: "Apache 207 - Sport",
+      length: 7,
+      initialTime: 7,
+      remainingTime: 7
+    };
+    this.librarySongs.push(song);
+    song = <Song>{
+      name: "Capital Bra - Tilidin",
+      length: 16,
+      initialTime: 16,
+      remainingTime: 16
+    };
+    this.librarySongs.push(song);
+  }
+
+  private seedVacuums(): void {
+    let vacuum = <Vacuum>{
+      roomName: "Living room",
+      scheduledHour: 23,
+      hasStarted: false
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Kitchen",
+      scheduledHour: 21,
+      hasStarted: false
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Parent's bedroom",
+      scheduledHour: 22,
+      hasStarted: true
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Grandparent's bedroom",
+      scheduledHour: 20,
+      hasStarted: true
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Child bedroom 1",
+      scheduledHour: 23,
+      hasStarted: false
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Child bedroom 2",
+      scheduledHour: 22,
+      hasStarted: false
+    };
+    this.vacuums.push(vacuum);
+    vacuum = <Vacuum>{
+      roomName: "Bathroom",
+      scheduledHour: 20,
+      hasStarted: false
+    };
+    this.vacuums.push(vacuum);
   }
 
   private seedThermostats(): void {
